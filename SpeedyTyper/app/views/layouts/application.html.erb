@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SpeedyTyper</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<body>
+
+<div class="content">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a>SpeedyTyper</a></h1>
+      </li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="left">
+        <li> <%= link_to 'Home' , root_path %> </li>
+        <li> <%= link_to 'Profile' , user_profile_path%> </li>
+        <li> <%= link_to 'About', static_pages_path%> </li>
+      </ul>
+    </section>
+  </nav>
+
+  <%= yield %>
+  <!-- <%= javascript_include_tag "application" %> -->
+
+</div>
+</body>
+</html>

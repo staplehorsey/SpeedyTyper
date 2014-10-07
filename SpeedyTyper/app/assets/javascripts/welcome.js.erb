@@ -1,0 +1,73 @@
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+// You can use CoffeeScript in this file: http://coffeescript.org/
+//= require game_logic.js
+
+  var input = "";
+  var o_input;
+  var b, r ,g;
+
+  var sample_text = "The quick brown fox jumped over the slow lazy dog";
+
+  $(document).ready(function() {
+    $('input').bind('input propertychange', function () {
+      o_input = true;
+      input = $('#in').val();
+      console.log(input);
+    });
+  });
+
+  var parent = document.querySelector('#gameDiv');
+  console.log("in here");
+
+  var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update });
+
+  function preload() {
+    game.stage.backgroundColor = '#71c5cf';
+    game.load.image('user','<%= asset_path 'Untitled.png' %>');
+  }
+
+  var u_sprite, bg,t;
+
+  function create() {
+    game.world.width = 800;
+    game.world.height = 400;
+
+    bg = game.add.graphics(0, 0);
+    bg.beginFill(0xf7f7f7, 1);
+    bg.drawRect(0, 0, game.world.width, game.world.height);
+    bg.endFill();
+
+    u_sprite = game.add.sprite(0,200,'user');
+    u_sprite.inputEnabled = true;
+
+    var grey  = "test";
+    var red   = "test";
+    var black = "test";
+
+    var style_b = { font: "25px Helvetica", fill: "#00000",  align: "left" };
+    var style_r = { font: "25px Helvetica", fill: "#ff0000", align: "left" };
+    var style_g = { font: "25px Helvetica", fill: "#C8C7C7", align: "left" };
+
+    b = game.add.text(0, 0, black, style_b);
+    r = game.add.text(b.width, 0, red, style_r);
+    g = game.add.text(r.x + r.width, 0,grey,style_g);
+
+  }
+
+  function update() {
+    if( o_input )
+    {
+      var to_render = GameLogic.process_input(input);
+      b.setText(to_render.black);
+      r.setText(to_render.red);
+      r.x = b.width;
+      g.setText(to_render.gray);
+      g.x = (b.width + r.width) -2 ;
+
+      u_sprite.x += (to_render.advance) ? 1 : 0;
+      o_input = false;
+    }
+  }
+
+

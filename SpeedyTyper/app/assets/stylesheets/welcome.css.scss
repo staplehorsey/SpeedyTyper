@@ -1,0 +1,16 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#gameDiv
+{
+  margin: 20px;
+//  height: 400px;
+  border: solid lightgray;
+  overflow: hidden;
+}
+
+#input
+{
+  width: 760px;
+  margin-left: 20px;
+}
