@@ -31,7 +31,6 @@ GameLogic = {
         r.push(input_arr[i]);
       }
     }
-    console.log("made it past loop");
     g = text_arr.join("").substr(correct_input,text_arr.length);
 
     var a = (r.length == 0);

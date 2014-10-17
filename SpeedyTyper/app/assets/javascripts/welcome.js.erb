@@ -7,8 +7,6 @@
   var o_input;
   var b, r ,g;
 
-  var sample_text = "The quick brown fox jumped over the slow lazy dog";
-
   $(document).ready(function() {
     $('input').bind('input propertychange', function () {
       o_input = true;
@@ -17,13 +15,10 @@
     });
   });
 
-  var parent = document.querySelector('#gameDiv');
-  console.log("in here");
-
   var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update });
 
   function preload() {
-    game.stage.backgroundColor = '#71c5cf';
+    game.stage.backgroundColor = '#f7f7f7';
     game.load.image('user','<%= asset_path 'Untitled.png' %>');
   }
 
@@ -41,9 +36,10 @@
     u_sprite = game.add.sprite(0,200,'user');
     u_sprite.inputEnabled = true;
 
-    var grey  = "test";
-    var red   = "test";
-    var black = "test";
+    var tr = GameLogic.process_input(input);
+    var grey  = tr.gray;
+    var red   = tr.red;
+    var black = tr.black;
 
     var style_b = { font: "25px Helvetica", fill: "#00000",  align: "left" };
     var style_r = { font: "25px Helvetica", fill: "#ff0000", align: "left" };
@@ -51,7 +47,8 @@
 
     b = game.add.text(0, 0, black, style_b);
     r = game.add.text(b.width, 0, red, style_r);
-    g = game.add.text(r.x + r.width, 0,grey,style_g);
+    g = game.add.text(0, 0,grey,style_g);
+      //set to zero because there should not be any input on init
 
   }
 
