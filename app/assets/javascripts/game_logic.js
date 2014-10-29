@@ -14,22 +14,19 @@ GameLogic = {
     var input_arr = input.split("");
 
     var r   = [];
+    var b;
     var g;
 
-    var correct_input = [];
-    var locked_index = 0;
-    var correct_words = 0;
+    var correct_words = "";
 
-    word_len = get_text().split(" ")[correct_words].length;
     for( i = 0; i < input_arr.length; i++)
     {
       if( text_arr[i] == input_arr[i] )
       {
-        correct_input.push(input_arr[i])
         if( input_arr[i] == ' ' )
         {
             clear = true;
-            correct_words++;
+            correct_words += input;
         }
       }
       else
@@ -37,9 +34,10 @@ GameLogic = {
         r.push(text_arr[i]);
       }
     }
-    g = text_arr.join("").substr(input.length);
+    g = get_text();
+    b = correct_words + input;
 
-    return {advance: clear, black:correct_input.join(""), red:r.join(""), gray:g};
+    return {advance: clear, black:b, red:r.join(""), gray:g};
   }
 };
 
