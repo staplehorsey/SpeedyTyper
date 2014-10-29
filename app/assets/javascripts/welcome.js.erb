@@ -61,6 +61,11 @@
       r.x = b.width;
       g.setText(to_render.gray);
       g.x = (b.width + r.width) -2 ;
+      if (clear)
+      {
+        document.getElementById("in").value = '';
+        clear = false;
+      }
 
       u_sprite.x += (to_render.advance) ? 1 : 0;
       o_input = false;

@@ -1,9 +1,10 @@
 /**
  *
  * Created by Matthias on 10/6/14.
+ * Destroyed by Nico on 10/29/14.
  */
 
-//var GameLogic = GameLogic || {};
+var clear;
 
 GameLogic = {
   process_input: function(input)
@@ -12,30 +13,33 @@ GameLogic = {
     var text_arr  = get_text().split("");
     var input_arr = input.split("");
 
-    var b = [];
     var r   = [];
     var g;
 
-    var i;
-    var correct_input = 0;
+    var correct_input = [];
+    var locked_index = 0;
+    var correct_words = 0;
 
-    for( i = 0; i < input_arr.length; i++ )
+    word_len = get_text().split(" ")[correct_words].length;
+    for( i = 0; i < input_arr.length; i++)
     {
       if( text_arr[i] == input_arr[i] )
       {
-        b.push(text_arr[i]);
-        correct_input ++;
+        correct_input.push(input_arr[i])
+        if( input_arr[i] == ' ' )
+        {
+            clear = true;
+            correct_words++;
+        }
       }
       else
       {
-        r.push(input_arr[i]);
+        r.push(text_arr[i]);
       }
     }
-    g = text_arr.join("").substr(correct_input,text_arr.length);
+    g = text_arr.join("").substr(input.length);
 
-    var a = (r.length == 0);
-
-    return {advance: a, black:b.join(""), red:r.join(""), gray:g};
+    return {advance: clear, black:correct_input.join(""), red:r.join(""), gray:g};
   }
 };
 
