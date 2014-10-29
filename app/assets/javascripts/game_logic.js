@@ -5,6 +5,7 @@
  */
 
 var clear;
+var correct_words = "";
 
 GameLogic = {
   process_input: function(input)
@@ -14,28 +15,27 @@ GameLogic = {
     var input_arr = input.split("");
 
     var r   = [];
-    var b;
+    var b = correct_words;
     var g;
-
-    var correct_words = "";
 
     for( i = 0; i < input_arr.length; i++)
     {
-      if( text_arr[i] == input_arr[i] )
+      if( text_arr[i+correct_words.length] == input_arr[i] && r.length == 0)
       {
+        b += input_arr[i]
         if( input_arr[i] == ' ' )
         {
             clear = true;
             correct_words += input;
+            input = ""
         }
       }
       else
       {
-        r.push(text_arr[i]);
+        r.push(text_arr[i+correct_words.length]);
       }
     }
-    g = get_text();
-    b = correct_words + input;
+    g = text_arr.slice(correct_words.length+input.length).join("")
 
     return {advance: clear, black:b, red:r.join(""), gray:g};
   }
