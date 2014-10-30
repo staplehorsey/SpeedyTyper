@@ -7,3 +7,10 @@ The final game will hopefully include:
 - Exciting graphics
 - Variable difficulty texts
 - Broad selection of texts
+
+To run locally:
+-----
+- `sudo apt-get install ruby ruby-dev`
+- `sudo gem install bundler`
+- `bundle install`
+- `rails server`
