@@ -5,37 +5,64 @@
 
 //var GameLogic = GameLogic || {};
 
+var correct_idx = 0;
+var wrong_idx   = 0;
+var para_idx    = 0;
+var old_idx     = 0;
+
+var game_para = get_text();
+    //will need to be shared somehow
+
 GameLogic = {
   process_input: function(input)
   {
-    console.log("input: " + input);
-    var text_arr  = get_text().split("");
+
+    var text_arr  = game_para.split("");
     var input_arr = input.split("");
 
-    var b = [];
-    var r   = [];
-    var g;
+    var advance = false;
 
-    var i;
-    var correct_input = 0;
-
-    for( i = 0; i < input_arr.length; i++ )
+    if( input.length > 0 || correct_idx > 0)
     {
-      if( text_arr[i] == input_arr[i] )
+      if( input.length > old_idx)
       {
-        b.push(text_arr[i]);
-        correct_input ++;
+        if (text_arr[correct_idx + para_idx] == ' ')
+        {
+            advance = true;
+            para_idx += correct_idx + 1;
+            correct_idx = 0;
+            wrong_idx = 0;
+        }
+        else
+        {
+          if (text_arr[ correct_idx + para_idx ] == input_arr[input.length-1])
+          {
+            correct_idx++;
+          }
+          else
+          {
+            wrong_idx++;
+          }
+        }
+      }
+      else if(wrong_idx > 0)
+      {
+        wrong_idx--;
       }
       else
       {
-        r.push(input_arr[i]);
+        correct_idx--;
       }
     }
-    g = text_arr.join("").substr(correct_input,text_arr.length);
 
-    var a = (r.length == 0);
+    var adj_idx = para_idx + correct_idx;
 
-    return {advance: a, black:b.join(""), red:r.join(""), gray:g};
+    var b = game_para.substr(0, adj_idx);
+    var r = input.substr(correct_idx, wrong_idx );
+    var g = game_para.substr(correct_idx+para_idx, game_para.length);
+
+    old_idx = (advance) ? 0 : input.length;
+    return {advance: advance, black:b, red:r, gray:g};
   }
 };
 

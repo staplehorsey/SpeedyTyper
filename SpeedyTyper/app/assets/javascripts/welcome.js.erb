@@ -62,7 +62,12 @@
       g.setText(to_render.gray);
       g.x = (b.width + r.width) -2 ;
 
-      u_sprite.x += (to_render.advance) ? 1 : 0;
+      if(to_render.advance)
+      {
+        u_sprite.x += 50;
+        $('#in').val('')
+      }
+
       o_input = false;
     }
   }
