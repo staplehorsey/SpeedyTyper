@@ -10,7 +10,7 @@ The final game will hopefully include:
 
 To run locally:
 -----
-- `sudo apt-get install ruby ruby-dev sqlite3`
+- `sudo apt-get install ruby ruby-dev make libsqlite3-dev`
 - `sudo gem install bundler`
 - `bundle install`
 - `rails server`
