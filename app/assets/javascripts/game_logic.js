@@ -8,6 +8,8 @@ var clear;
 var correct_words = "";
 var start_time = new Date().getTime();
 var wpm;
+var total_keystrokes = 0;
+var complete_input = get_text();
 
 GameLogic = {
   process_input: function(input)
@@ -22,20 +24,24 @@ GameLogic = {
 
     for( i = 0; i < input_arr.length; i++)
     {
+
       if( text_arr[i+correct_words.length] == input_arr[i] && r.length == 0)
       {
-        b += input_arr[i]
+        b += input_arr[i];
         if( input_arr[i] == ' ' )
         {
+            total_keystrokes += input_arr.length;
             clear = true;
             correct_words += input;
             input = "";
             wpm = calculate_wpm();
+            accuracy();
         }
       }
       else
       {
-        r.push(text_arr[i+correct_words.length]);
+          total_keystrokes += input_arr.length;
+          r.push(text_arr[i+correct_words.length]);
       }
     }
     g = text_arr.slice(correct_words.length+input.length).join("")
@@ -46,7 +52,7 @@ GameLogic = {
 
 function get_text()
 {
-   return "The quick brown fox jumped over the slow lazy dog"
+   return "The quick brown fox jumped over the slow lazy dog "
 }
 
 function calculate_wpm(){
@@ -57,10 +63,19 @@ function calculate_wpm(){
 
     diff = diff/60000; // Convert to Minutes
 
-    total_entries = correct_words.length;
+    var total_entries = correct_words.length;
 
     var gwpm = (total_entries/5)/ diff; //Gross Words Per Minute
 
     return gwpm;
+
+}
+
+function accuracy(){
+
+    var word_length = complete_input.length;
+    document.getElementById("accuracy").innerHTML = "Accuracy: "
+        + (Math.round(((word_length/total_keystrokes)*100) * 100) / 100 ) + "%";
+    return word_length/total_keystrokes;
 
 }
