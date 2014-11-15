@@ -45,3 +45,15 @@ function get_text()
 {
    return "The quick brown fox jumped over the slow lazy dog"
 }
+
+function wpm(start_time, end_time, total_entries, erros){
+
+    var diff = end_time - start_time;
+
+    var gwpm = (total_entries/5)/ diff; //Gross Words Per Minute
+
+    var nwpm = gwpm - (erros/diff); //Net Words Per Minute Account for Errors Uncorrected
+
+    return nwpm;
+
+}
