@@ -6,6 +6,8 @@
 
 var clear;
 var correct_words = "";
+var start_time = new Date().getTime();
+var wpm;
 
 GameLogic = {
   process_input: function(input)
@@ -27,7 +29,8 @@ GameLogic = {
         {
             clear = true;
             correct_words += input;
-            input = ""
+            input = "";
+            wpm = calculate_wpm();
         }
       }
       else
@@ -44,4 +47,20 @@ GameLogic = {
 function get_text()
 {
    return "The quick brown fox jumped over the slow lazy dog"
+}
+
+function calculate_wpm(){
+
+    var end_time = new Date().getTime();
+
+    var diff = end_time - start_time;
+
+    diff = diff/60000; // Convert to Minutes
+
+    total_entries = correct_words.length;
+
+    var gwpm = (total_entries/5)/ diff; //Gross Words Per Minute
+
+    return gwpm;
+
 }
