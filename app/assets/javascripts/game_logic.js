@@ -9,7 +9,7 @@ var correct_words = "";
 var start_time = new Date().getTime();
 var wpm;
 var total_keystrokes = 0;
-var complete_input = get_text();
+var incorrect_keystrokes = 0;
 
 GameLogic = {
   process_input: function(input)
@@ -41,6 +41,7 @@ GameLogic = {
       else
       {
           total_keystrokes += input_arr.length;
+          incorrect_keystrokes += input_arr.length;
           r.push(text_arr[i+correct_words.length]);
       }
     }
@@ -73,9 +74,7 @@ function calculate_wpm(){
 
 function accuracy(){
 
-    var word_length = complete_input.length;
     document.getElementById("accuracy").innerHTML = "Accuracy: "
-        + (Math.round(((word_length/total_keystrokes)*100) * 100) / 100 ) + "%";
-    return word_length/total_keystrokes;
+        + (Math.round((((total_keystrokes-incorrect_keystrokes)/total_keystrokes)*100) * 100) / 100 ) + "%";
 
 }

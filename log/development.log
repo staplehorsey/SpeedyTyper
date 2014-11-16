@@ -2155,3 +2155,450 @@ Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 16:24:
 
 
 Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 16:24:12 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:06:57 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 234ms (Views: 233.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:06:58 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 101ms (Views: 100.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:08:06 -0700
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:17 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:17 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:17 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:17 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:17 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 137ms (Views: 136.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:08:26 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:08:27 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:09:12 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 3369ms (Views: 3368.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:09:16 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:11:20 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 210ms (Views: 209.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:11:21 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:11:35 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 132ms (Views: 131.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:35 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:35 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:35 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:11:36 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 240ms (Views: 239.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:16:13 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:16:14 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 190ms (Views: 189.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:03 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:33:04 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 121ms (Views: 121.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/user_profile.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/game_logic.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/phaser.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/user_profile.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
+
+
+Started GET "/assets/Untitled.png" for 127.0.0.1 at 2014-11-15 17:33:25 -0700
