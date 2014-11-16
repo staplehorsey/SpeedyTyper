@@ -56,7 +56,7 @@ function update() {
     if( o_input )
     {
         var to_render = GameLogic.process_input(input);
-       document.getElementById("wpm").innerHTML = "WPM: " + Math.round(wpm);
+        document.getElementById("wpm").innerHTML = "WPM: " + Math.round(wpm);
         b.setText(to_render.black);
         r.setText(to_render.red);
         r.x = b.width;
