@@ -35,7 +35,6 @@ GameLogic =
             correct_words += input;
             input = "";
             wpm = calculate_wpm();
-            accuracy();
         }
       }
       else
@@ -46,6 +45,10 @@ GameLogic =
       }
     }
     g = text_arr.slice(correct_words.length+input.length).join("")
+    if (finished())
+    {
+        accuracy();
+    }
 
     return {advance: clear, black:b, red:r.join(""), gray:g};
     }
@@ -62,7 +65,7 @@ function finished()
 
 function get_text()
 {
-    return "The quick brown fox jumped over the slow lazy dog"
+    return "The quick brown fox jumped over the slow lazy dog "
 }
 
 function calculate_wpm()
