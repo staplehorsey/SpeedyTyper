@@ -13,7 +13,39 @@ $(document).ready(function() {
         input = $('#in').val();
         console.log(input);
     });
+
 });
+
+//TODO make this recursive
+function init()
+{
+  console.log("Waiting to join a new game");
+  var ft = true;
+  var game_id = -1;
+  var id = "";
+
+  while( game_id == -1)
+  {
+    $.ajax({
+      url: '/join_game',
+      type: 'PATCH',
+      async: false,
+      data: {name:"Foo", first_try:ft, me:id},
+      success:function(json)
+      {
+        console.log(json);
+        game_id = json.g_id;
+        id      = json.my_id;
+        ft      = false;
+        console.log("Game id:" + game_id);
+        //load other players
+        //call ready
+      }
+    });
+  }
+
+}
+
 
 var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update });
 
@@ -35,6 +67,8 @@ function create() {
 
     u_sprite = game.add.sprite(0,200,'user');
     u_sprite.inputEnabled = true;
+
+    init();
 
     var tr = GameLogic.process_input(input);
     var grey  = tr.gray;
