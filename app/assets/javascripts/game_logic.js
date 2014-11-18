@@ -10,63 +10,81 @@ var wpm;
 var total_keystrokes = 0;
 var incorrect_keystrokes = 0;
 
-GameLogic = 
+const line_width = 60;
+
+function GameLogic()
 {
-    process_input: function(input)
+    this.game_text = "Waiting to Join a Game";
+    this.current_line = "";
+    this.game_status = false;
+    this.pos = 0;
+
+    this.init = function(text)
     {
-        console.log("input: " + input);
-        var text_arr  = get_text().split("");
-        var input_arr = input.split("");
+      this.game_text = text;
+      this.get_line();
+    };
 
-        var r   = [];
-        var b = correct_words;
-        var g;
-
-    for( i = 0; i < input_arr.length; i++)
+    this.process_input = function(input)
     {
+      var text_arr  = this.current_line.split("");
+      var input_arr = input.split("");
 
-      if( text_arr[i+correct_words.length] == input_arr[i] && r.length == 0)
+      var r   = [];
+      var b = correct_words;
+      var g;
+
+      for( i = 0; i < input_arr.length; i++)
       {
-        b += input_arr[i];
-        if( input_arr[i] == ' ' )
+        if( text_arr[i+correct_words.length] == input_arr[i] && r.length == 0)
         {
+          b += input_arr[i];
+          if( input_arr[i] == ' ' || (correct_words.length + input.length) == this.current_line.length )
+          {
             total_keystrokes += input_arr.length;
             clear = true;
             correct_words += input;
             input = "";
             wpm = calculate_wpm();
+          }
         }
-      }
-      else
-      {
+        else
+        {
           total_keystrokes += input_arr.length;
           incorrect_keystrokes += input_arr.length;
           r.push(text_arr[i+correct_words.length]);
+        }
       }
-    }
-    g = text_arr.slice(correct_words.length+input.length).join("")
-    if (finished())
-    {
+
+      console.log("Line len: " + this.current_line.trim() + " correct: " + correct_words.trim());
+      if ( this.current_line.trim().length == correct_words.trim().length )
+      {
+        this.pos += correct_words.length;
+        console.log("Should be in here");
         accuracy();
-    }
+        this.get_line();
+        text_arr = this.current_line.split("");
+        correct_words = '';
+        clear = true;
+        r = [];
+        b = [];
+      }
 
-    return {advance: clear, black:b, red:r.join(""), gray:g};
-    }
-};
+      g = text_arr.slice(correct_words.length+input.length).join("");
 
-function finished()
-{
-    if (correct_words === get_text()) {
-        return true;
-    } else {
-        return false;
-    }
+      return {advance: clear, black:b, red:r.join(""), gray:g, p:this.pos};
+    };
+
+    this.get_line = function()
+    {
+      if(this.pos+line_width < this.game_text.length)
+      {
+        this.current_line = this.game_text.slice(this.pos, this.pos+line_width);
+        console.log("Updated line: " + this.current_line);
+      }
+    };
 }
 
-function get_text()
-{
-    return "The quick brown fox jumped over the slow lazy dog "
-}
 
 function calculate_wpm()
 {

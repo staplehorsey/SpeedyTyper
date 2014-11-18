@@ -22,7 +22,10 @@ class WelcomeController < ApplicationController
 
       puts(new_id)
       puts(game_id)
-      responce = {my_id:new_id, g_id:game_id, opposition:WelcomeHelper.get_game_info(game_id) }
+      responce = {my_id:new_id,
+                  g_id:game_id,
+                  opposition:WelcomeHelper.get_game_info(game_id),
+                  g_text:WelcomeHelper.get_game_text(game_id)}
       format.json{render :json => responce}
 
     end

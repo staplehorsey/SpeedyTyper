@@ -7,24 +7,25 @@ var input = "";
 var o_input;
 var b, r ,g;
 
-$(document).ready(function() {
-    $('input').bind('input propertychange', function () {
-        o_input = true;
-        input = $('#in').val();
-        console.log(input);
-    });
+var ft = true;
+var game_id = -1;
+var id = "";
+var game_text;
+var opponents = null;
 
+var current_game = new GameLogic;
+
+$(document).ready(function() {
+  $('input').bind('input propertychange', function () {
+    o_input = true;
+    input = $('#in').val();
+  });
 });
 
-//TODO make this recursive
 function init()
 {
   console.log("Waiting to join a new game");
-  var ft = true;
-  var game_id = -1;
-  var id = "";
-
-  while( game_id == -1)
+  if( game_id == -1)
   {
     $.ajax({
       url: '/join_game',
@@ -34,29 +35,36 @@ function init()
       success:function(json)
       {
         console.log(json);
-        game_id = json.g_id;
-        id      = json.my_id;
-        ft      = false;
-        console.log("Game id:" + game_id);
-        //load other players
-        //call ready
+        game_id   = json.g_id;
+        id        = json.my_id;
+        game_text = json.g_text;
+        ft        = false;
+        setTimeout(init, Math.random()*100);
       }
     });
   }
-
-}
+  else
+  {
+    current_game.init(game_text);
+    o_input = true;
+    console.log("Joined game waiting for other players to be ready");
+  }
+}//end init
 
 
 var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update });
 
 function preload() {
     game.stage.backgroundColor = '#f7f7f7';
-    game.load.image('user','<%= asset_path 'Untitled.png' %>');
+    game.load.image('user','<%= asset_path 'sierrasShark.png' %>');
 }
 
 var u_sprite, bg,t;
 
 function create() {
+
+    init();
+
     game.world.width = 800;
     game.world.height = 400;
 
@@ -68,9 +76,7 @@ function create() {
     u_sprite = game.add.sprite(0,200,'user');
     u_sprite.inputEnabled = true;
 
-    init();
-
-    var tr = GameLogic.process_input(input);
+    var tr = current_game.process_input(input);
     var grey  = tr.gray;
     var red   = tr.red;
     var black = tr.black;
@@ -83,28 +89,30 @@ function create() {
     r = game.add.text(b.width, 0, red, style_r);
     g = game.add.text(0, 0,grey,style_g);
     //set to zero because there should not be any input on init
-
 }
 
 function update() {
-    if( o_input )
-    {
-        var to_render = GameLogic.process_input(input);
-        document.getElementById("wpm").innerHTML = "WPM: " + Math.round(wpm);
-        b.setText(to_render.black);
-        r.setText(to_render.red);
-        r.x = b.width;
-        g.setText(to_render.gray);
-        g.x = (b.width + r.width) -2 ;
-        if (clear)
-        {
-            document.getElementById("in").value = '';
-            clear = false;
-        }
 
-        u_sprite.x += (to_render.advance) ? (800/get_text().split(" ").length) : 0;
-        o_input = false;
+  if( o_input )
+  {
+    var to_render = current_game.process_input(input);
+    document.getElementById("wpm").innerHTML = "WPM: " + Math.round(wpm);
+    b.setText(to_render.black);
+    r.setText(to_render.red);
+    r.x = b.width;
+    g.setText(to_render.gray);
+    g.x = (b.width + r.width) -2 ;
+
+    if (clear)
+    {
+      document.getElementById("in").value = '';
+      clear = false;
     }
+
+    u_sprite.x += (to_render.advance) ? (800/game_text.split(" ").length) : 0;
+    o_input = false;
+  }
+
 }
 
 

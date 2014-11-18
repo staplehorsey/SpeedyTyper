@@ -16,4 +16,17 @@ module WelcomeHelper
     return to_ret
   end
 
+  #only give games text so keep track of seed for text
+  def self.get_game_text(seed)
+    if seed != -1
+      lines = File.open(Rails.public_path + 'Foo_text').readlines
+      ngen = Random.new(seed)
+      ngen.seed
+      start_idx = ngen.rand(lines.length-5)
+      game_raw = lines.slice(start_idx, start_idx+5)
+      game_raw = game_raw.map {|element| element.strip}
+      return game_raw.join(' ')
+    end
+  end
+
 end
