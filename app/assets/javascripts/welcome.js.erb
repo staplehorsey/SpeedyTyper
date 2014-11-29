@@ -13,7 +13,11 @@ var id = "";
 var game_text;
 var opponents = null;
 
+var ready = false;
+
 var current_game = new GameLogic;
+
+var opp_sprite;
 
 $(document).ready(function() {
   $('input').bind('input propertychange', function () {
@@ -45,25 +49,54 @@ function init()
   }
   else
   {
-    current_game.init(game_text);
+    console.log("Found other player");
+    current_game.game_text = "Waiting for other player";
+    current_game.update_line();
+    opp_sprite.visible = true;
     o_input = true;
-    console.log("Joined game waiting for other players to be ready");
+    ready_set_go();
   }
 }//end init
+
+
+function ready_set_go()
+{
+  if( ! ready )
+  {
+    $.ajax({
+        url: '/ready',
+        type: 'GET',
+        async: false,
+        data: {my_id:id},
+        success:function(responce)
+        {
+          console.log("Ready: " + responce.ready);
+          ready = responce.ready
+        }
+    });
+    setTimeout(ready_set_go, Math.random()*100);
+  }
+  else
+  {
+    current_game.game_text = this.game_text;
+    current_game.update_line();
+  }
+}//end ready_set_go
 
 
 var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update });
 
 function preload() {
-    game.stage.backgroundColor = '#f7f7f7';
-    game.load.image('user','<%= asset_path 'sierrasShark.png' %>');
+  game.stage.backgroundColor = '#f7f7f7';
+  game.load.image('opponent','<%= asset_path 'Untitled.png' %>');
+  game.load.image('user','<%= asset_path 'sierrasShark.png' %>');
 }
 
 var u_sprite, bg,t;
 
 function create() {
 
-    init();
+    init("Looking for other players");
 
     game.world.width = 800;
     game.world.height = 400;
@@ -74,7 +107,10 @@ function create() {
     bg.endFill();
 
     u_sprite = game.add.sprite(0,200,'user');
+    opp_sprite = game.add.sprite(0, 250,'opponent');
     u_sprite.inputEnabled = true;
+    opp_sprite.inputEnabled = true;
+    opp_sprite.visible = false;
 
     var tr = current_game.process_input(input);
     var grey  = tr.gray;
@@ -114,5 +150,4 @@ function update() {
   }
 
 }
-
 

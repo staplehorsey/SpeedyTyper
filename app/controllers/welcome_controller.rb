@@ -20,12 +20,11 @@ class WelcomeController < ApplicationController
       Players.gen_game(new_id)
       game_id = Players.find_by_id(new_id)[:game_id]
 
-      puts(new_id)
-      puts(game_id)
       responce = {my_id:new_id,
                   g_id:game_id,
                   opposition:WelcomeHelper.get_game_info(game_id),
                   g_text:WelcomeHelper.get_game_text(game_id)}
+
       format.json{render :json => responce}
 
     end
@@ -41,7 +40,12 @@ class WelcomeController < ApplicationController
   end
 
   def ready
-
+    respond_to do |format|
+      player = params[:my_id]
+      unless player.nil?
+        format.json{ render :json => {ready:WelcomeHelper.is_ready(player)} }
+      end
+    end
   end
 
 end

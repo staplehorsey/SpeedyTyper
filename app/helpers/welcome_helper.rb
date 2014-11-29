@@ -1,5 +1,7 @@
 module WelcomeHelper
 
+  @game_size = 2
+
   #gets all of the users in a specified game and their status
   def self.get_game_info(game_id)
     users = []
@@ -8,9 +10,15 @@ module WelcomeHelper
     end
   end
 
-  def self.is_ready(game_id)
+  def self.is_ready(player)
+
+    p = Players.find_by_id(player)
+    game_Id = p.game_id
+    p.awk = true
+    p.save
+
     to_ret = false
-    if Players.where(:game_id => game_id).where(:awk => true).count == @game_size
+    if Players.where(:game_id => game_Id ).where(:awk => true).count == @game_size
       to_ret = true
     end
     return to_ret
