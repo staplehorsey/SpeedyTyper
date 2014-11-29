@@ -36,7 +36,14 @@ class WelcomeController < ApplicationController
   end
 
   def do_update
-
+    respond_to do |format|
+      format.json{render :json => WelcomeHelper.get_update(
+                             params[:my_id],
+                             params[:game_id],
+                             params[:my_won],
+                             params[:my_pos]
+                          )}
+    end
   end
 
   def ready

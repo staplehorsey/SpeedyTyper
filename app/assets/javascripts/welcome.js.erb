@@ -8,10 +8,14 @@ var o_input;
 var b, r ,g;
 
 var ft = true;
+  //first try on joining game
 var game_id = -1;
 var id = "";
 var game_text;
-var opponents = null;
+var opponent;
+
+var playing = true;
+var won     = false;
 
 var ready = false;
 
@@ -80,6 +84,8 @@ function ready_set_go()
   {
     current_game.game_text = this.game_text;
     current_game.update_line();
+    o_input = true;
+    update_game();
   }
 }//end ready_set_go
 
@@ -88,8 +94,44 @@ var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload
 
 function preload() {
   game.stage.backgroundColor = '#f7f7f7';
-  game.load.image('opponent','<%= asset_path 'Untitled.png' %>');
-  game.load.image('user','<%= asset_path 'sierrasShark.png' %>');
+  game.load.image('user','<%= asset_path 'yourWelcomeJacob.png' %>');
+  game.load.image('opponent','<%= asset_path 'sierrasShark.png' %>');
+}
+
+function update_game()
+{
+  if( playing )
+  {
+    $.ajax({
+      url: '/do_update',
+      type: 'GET',
+      async: false,
+      data: {game_id:game_id, my_id:id, my_pos:u_sprite.x, my_won:won},
+      success:function(responce)
+      {
+        console.log(responce);
+        opp_sprite.x = responce.pos;
+        playing  = !responce.win;
+        setTimeout(update_game, Math.random()*100);
+      }
+    });
+  }
+  else
+  {
+    if( won )
+    {
+      current_game.game_text = "Winner winner chicken dinner";
+      current_game.update_line();
+      o_input = true;
+    }
+    else
+    {
+      current_game.game_text = "Lost =(";
+      current_game.update_line();
+      o_input = true;
+    }
+    //TODO add logic to play again
+  }
 }
 
 var u_sprite, bg,t;
@@ -107,7 +149,7 @@ function create() {
     bg.endFill();
 
     u_sprite = game.add.sprite(0,200,'user');
-    opp_sprite = game.add.sprite(0, 250,'opponent');
+    opp_sprite = game.add.sprite(0, 300,'opponent');
     u_sprite.inputEnabled = true;
     opp_sprite.inputEnabled = true;
     opp_sprite.visible = false;
@@ -146,6 +188,11 @@ function update() {
     }
 
     u_sprite.x += (to_render.advance) ? (800/game_text.split(" ").length) : 0;
+
+    if(u_sprite.x > game_text.split(" ").length - 20)
+    {
+      won = true;
+    }
     o_input = false;
   }
 

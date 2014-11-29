@@ -10,6 +10,22 @@ module WelcomeHelper
     end
   end
 
+  def self.get_update(id, game_id, win, pos)
+    current_player = Players.find_by_id(id)
+    current_player.game_outcome = win
+    current_player.pos = pos
+    current_player.save
+
+    to_ret = nil
+    Players.where(:game_id => game_id).where.not(:id => id).each {
+      |p| to_ret = {op:p.id, pos:p.pos, win:p.game_outcome}
+    }
+
+    puts(to_ret[:pos])
+
+    return to_ret
+  end
+
   def self.is_ready(player)
 
     p = Players.find_by_id(player)
