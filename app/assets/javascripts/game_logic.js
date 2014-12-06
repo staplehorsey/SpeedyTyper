@@ -1,7 +1,7 @@
 /**
- *
- * Created by Matthias on 10/6/14.
- */
+* Implementation of the Game Logic
+* Created by Matthias on 10/6/14.
+*/
 
 var clear;
 var correct_words = "";
@@ -12,6 +12,9 @@ var incorrect_keystrokes = 0;
 
 const line_width = 60;
 
+/*
+ * This Function Implements the GameLogic
+ */
 function GameLogic()
 {
   this.game_text = "";
@@ -92,7 +95,9 @@ function GameLogic()
   };
 }
 
-
+/**
+ * @return  gwpm - the gross words per minute
+ */
 function calculate_wpm()
 {
   var end_time = new Date().getTime();
@@ -105,6 +110,11 @@ function calculate_wpm()
 
 }
 
+/*
+* @reinst
+*
+
+ */
 function accuracy()
 {
   document.getElementById("accuracy").innerHTML = "Accuracy: "
