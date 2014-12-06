@@ -1,4 +1,4 @@
-/**
+/*
 * Implementation of the Game Logic
 * Created by Matthias on 10/6/14.
 */
@@ -12,9 +12,12 @@ var incorrect_keystrokes = 0;
 
 const line_width = 60;
 
-/*
- * This Function Implements the GameLogic
- */
+/**
+* @description This Function Implements the GameLogic and processes the text input and
+*   records it to the screen.
+* @return The inputted characters and their status.
+*
+*/
 function GameLogic()
 {
   this.game_text = "";
@@ -96,6 +99,7 @@ function GameLogic()
 }
 
 /**
+ * @description Calculated the gross words per minute and displays them.
  * @return  gwpm - the gross words per minute
  */
 function calculate_wpm()
@@ -110,11 +114,9 @@ function calculate_wpm()
 
 }
 
-/*
-* @reinst
-*
-
- */
+/**
+* @description Displays the accracy at the end of the game.
+*/
 function accuracy()
 {
   document.getElementById("accuracy").innerHTML = "Accuracy: "
