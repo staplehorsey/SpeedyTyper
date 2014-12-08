@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Provides GameLogic class needed for:
  * - Requesting a game from the server
@@ -9,12 +8,6 @@
  * Created by Matthias on 10/6/14.
  * @module game_logic
  */
-=======
-/*
-* Implementation of the Game Logic
-* Created by Matthias on 10/6/14.
-*/
->>>>>>> d6b2ca68eb2ec650e2a9e47b8a70ffa9a7e9ead1
 
 /*
  * Global variables
@@ -34,20 +27,12 @@ const line_width = 60;
 
 
 /**
-<<<<<<< HEAD
  * Stores the state of the game and provides logic
  * for updating the user and opponent throughout the
  * game from beginning to end
  *
  * @Class GameLogic
  */
-=======
-* @description This Function Implements the GameLogic and processes the text input and
-*   records it to the screen.
-* @return The inputted characters and their status.
-*
-*/
->>>>>>> d6b2ca68eb2ec650e2a9e47b8a70ffa9a7e9ead1
 function GameLogic()
 {
   this.game_text = "";
@@ -156,7 +141,6 @@ function GameLogic()
     this.current_line = this.game_text.slice(this.pos, this.pos+line_width);
   };
 
-<<<<<<< HEAD
   /**
    * Determines if the current user has locally won the game or not
    */
@@ -178,19 +162,6 @@ function GameLogic()
     diff = diff/60000; // Convert to Minutes
     total_entries = this.pos;
     var gwpm = (total_entries/5)/ diff; //Gross Words Per Minute
-=======
-/**
- * @description Calculated the gross words per minute and displays them.
- * @return  gwpm - the gross words per minute
- */
-function calculate_wpm()
-{
-  var end_time = new Date().getTime();
-  var diff = end_time - start_time;
-  diff = diff/60000; // Convert to Minutes
-  total_entries = correct_words.length;
-  var gwpm = (total_entries/5)/ diff; //Gross Words Per Minute
->>>>>>> d6b2ca68eb2ec650e2a9e47b8a70ffa9a7e9ead1
 
     return gwpm;
   };
@@ -207,14 +178,3 @@ function calculate_wpm()
 
 }//end GameLogic
 
-<<<<<<< HEAD
-=======
-/**
-* @description Displays the accracy at the end of the game.
-*/
-function accuracy()
-{
-  document.getElementById("accuracy").innerHTML = "Accuracy: "
-     + (Math.round((((total_keystrokes-incorrect_keystrokes)/total_keystrokes)*100) * 100) / 100 ) + "%";
-}
->>>>>>> d6b2ca68eb2ec650e2a9e47b8a70ffa9a7e9ead1
