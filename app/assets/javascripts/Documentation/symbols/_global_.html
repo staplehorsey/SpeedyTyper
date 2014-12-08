@@ -218,6 +218,40 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class _global_.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/_global_.html#clear">clear</a></b>
+								</div>
+								<div class="description">Provides GameLogic class needed for:
+- Requesting a game from the server
+- Loading and iterating though the game text
+- Determining the correctness of the user
+- Rendering a win or loose
+
+Created by Matthias on 10/6/14.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
@@ -238,7 +272,8 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#accuracy">accuracy</a></b>()
 								</div>
-								<div class="description">Displays the accracy at the end of the game.</div>
+								<div class="description">Determines accuracy from number of characters correct and
+renders it on the main page</div>
 							</td>
 						</tr>
 					
@@ -247,7 +282,28 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#calculate_wpm">calculate_wpm</a></b>()
 								</div>
-								<div class="description">Calculated the gross words per minute and displays them.</div>
+								<div class="description">Determines the words per minute based off
+of system time and number of characters typed</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#chooseGameMode">chooseGameMode</a></b>(button)
+								</div>
+								<div class="description">Processes input from initial buttons to determines
+if the user would like to play single or multi-player
+Removes the fog effect on ether change</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#create">create</a></b>()
+								</div>
+								<div class="description">Initializes Phaser game objects</div>
 							</td>
 						</tr>
 					
@@ -256,8 +312,18 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#GameLogic">GameLogic</a></b>()
 								</div>
-								<div class="description">This Function Implements the GameLogic and processes the text input and
-  records it to the screen.</div>
+								<div class="description">Stores the state of the game and provides logic
+for updating the user and opponent throughout the
+game from beginning to end</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#get_game_status">get_game_status</a></b>()
+								</div>
+								<div class="description">Determines if the current user has locally won the game or not</div>
 							</td>
 						</tr>
 					
@@ -266,7 +332,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#get_line">get_line</a></b>()
 								</div>
-								<div class="description"></div>
+								<div class="description">Gets the next line of text form the game text paragraph</div>
 							</td>
 						</tr>
 					
@@ -275,7 +341,17 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#init">init</a></b>(text)
 								</div>
-								<div class="description"></div>
+								<div class="description">Loads the game text the user will
+be attempting to type a quickly as possible to win</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#preload">preload</a></b>()
+								</div>
+								<div class="description">Phaser pre-load</div>
 							</td>
 						</tr>
 					
@@ -284,7 +360,40 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#process_input">process_input</a></b>(input)
 								</div>
-								<div class="description"></div>
+								<div class="description">Takes all of the text from the input box and iterates over it while
+comparing it to the known game text and determines if the user is correct
+and should advance or incorrect and should not advance while rendering their mistake
+in red.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#ready_set_go">ready_set_go</a></b>()
+								</div>
+								<div class="description">Waits for other player to load text</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#update">update</a></b>()
+								</div>
+								<div class="description">Phaser update function draws on the canvas and calls
+game logic to determin what to render</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#update_game">update_game</a></b>()
+								</div>
+								<div class="description">Polls server for opponent updates
+also determins if current user has won and sends that
+information to the server to notify other users</div>
 							</td>
 						</tr>
 					
@@ -293,7 +402,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/_global_.html#update_line">update_line</a></b>()
 								</div>
-								<div class="description"></div>
+								<div class="description">Update the line of text without checking if it will fit</div>
 							</td>
 						</tr>
 					
@@ -311,6 +420,42 @@ ul.inheritsList
 
 <!-- ============================== field details ========================== -->		
 			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="clear"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>clear</b>
+					
+					</div>
+					<div class="description">
+						Provides GameLogic class needed for:
+- Requesting a game from the server
+- Loading and iterating though the game text
+- Determining the correctness of the user
+- Rendering a win or loose
+
+Created by Matthias on 10/6/14.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -326,7 +471,8 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Displays the accracy at the end of the game.
+						Determines accuracy from number of characters correct and
+renders it on the main page
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -349,12 +495,13 @@ ul.inheritsList
 					<a name="calculate_wpm"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{number}</span>
 					<b>calculate_wpm</b>()
 					
 					</div>
 					<div class="description">
-						Calculated the gross words per minute and displays them.
+						Determines the words per minute based off
+of system time and number of characters typed
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -372,9 +519,78 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>gwpm - the gross words per minute</dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="chooseGameMode"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>chooseGameMode</b>(button)
+					
+					</div>
+					<div class="description">
+						Processes input from initial buttons to determines
+if the user would like to play single or multi-player
+Removes the fog effect on ether change
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/welcome.js.html">welcome.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>button</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="create"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>create</b>()
+					
+					</div>
+					<div class="description">
+						Initializes Phaser game objects
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/welcome.js.html">welcome.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
 						
 						
 						
@@ -389,8 +605,9 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						This Function Implements the GameLogic and processes the text input and
-  records it to the screen.
+						Stores the state of the game and provides logic
+for updating the user and opponent throughout the
+game from beginning to end
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -405,12 +622,33 @@ ul.inheritsList
 						
 						
 						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd>The inputted characters and their status.</dd>
-							
-							</dl>
+						
+						
+
+					<hr />
+				
+					<a name="get_game_status"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>get_game_status</b>()
+					
+					</div>
+					<div class="description">
+						Determines if the current user has locally won the game or not
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
 						
 						
 						
@@ -425,7 +663,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						
+						Gets the next line of text form the game text paragraph
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -453,7 +691,8 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						
+						Loads the game text the user will
+be attempting to type a quickly as possible to win
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -484,15 +723,47 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="process_input"> </a>
+					<a name="preload"> </a>
 					<div class="fixedFont">
 					
 					
+					<b>preload</b>()
+					
+					</div>
+					<div class="description">
+						Phaser pre-load
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/welcome.js.html">welcome.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="process_input"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{{advance: *|black: string|red: string|gray: string|p: number}}</span>
 					<b>process_input</b>(input)
 					
 					</div>
 					<div class="description">
-						
+						Takes all of the text from the input box and iterates over it while
+comparing it to the known game text and determines if the user is correct
+and should advance or incorrect and should not advance while rendering their mistake
+in red. If the end of the current line of text is reached then the next one is acquired
+until the game is won or lost
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -510,9 +781,104 @@ ul.inheritsList
 									<b>input</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>the entire user input</dd>
 							
 							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{{advance: *|black: string|red: string|gray: string|p: number}}</span> black is the correct text, red is the incorrect text, gray is text yet to be completed by
+ the user</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="ready_set_go"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>ready_set_go</b>()
+					
+					</div>
+					<div class="description">
+						Waits for other player to load text
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/welcome.js.html">welcome.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="update"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>update</b>()
+					
+					</div>
+					<div class="description">
+						Phaser update function draws on the canvas and calls
+game logic to determin what to render
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/welcome.js.html">welcome.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="update_game"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>update_game</b>()
+					
+					</div>
+					<div class="description">
+						Polls server for opponent updates
+also determins if current user has won and sends that
+information to the server to notify other users
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/welcome.js.html">welcome.js</a>.
+						
+						
+					</div>
+					
+					
+					
 						
 						
 						
@@ -531,7 +897,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						
+						Update the line of text without checking if it will fit
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/game_logic.js.html">game_logic.js</a>.
@@ -563,7 +929,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Dec 06 2014 13:34:51 GMT-0700 (MST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Dec 07 2014 22:29:29 GMT-0700 (MST)
 		</div>
 	</body>
 </html>

@@ -4,10 +4,10 @@ class WelcomeController < ApplicationController
   def index
   end
 
-  # @Description rout when called makes a new user and attempts to add them to a game
+  # rout when called makes a new user and attempts to add them to a game
   #  or tries to find a game for a waiting user
-  # @Param Ajax request indicating either a new user to create or find a waiting user a game
-  # @Return the game text and opponent id and server generated id and game id or
+  # @param Ajax request indicating either a new user to create or find a waiting user a game
+  # @return the game text and opponent id and server generated id and game id or
   #  if no game ready -1 game id and the new user id
   def join_game
 
@@ -39,7 +39,7 @@ class WelcomeController < ApplicationController
 
   end
 
-  # @Description Takes in user information and gets information about the
+  # Takes in user information and gets information about the
   #   current game including: other player position and if they have won or not
   #   also adds current user win status to the db
   #
@@ -54,7 +54,7 @@ class WelcomeController < ApplicationController
     end
   end
 
-  # @Description Determines if all users are ready to play
+  # Determines if all users are ready to play
   def ready
     respond_to do |format|
       player = params[:my_id]
