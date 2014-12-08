@@ -28,11 +28,16 @@ gem 'spring',        group: :development
 
 gem 'foundation-rails', '5.4.2'
 gem 'phaser-rails'
+
+#Used for YARD Documentation Server
+gem 'yard'
+gem 'rdoc'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
