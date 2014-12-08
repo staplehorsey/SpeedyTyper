@@ -56,9 +56,9 @@ module WelcomeHelper
       ngen = Random.new(seed)
       ngen.seed
 
-      start_idx = ngen.rand(game_raw.length - 1)
+      start_idx = ngen.rand(game_raw.length - 4)
       game_raw = game_raw.map {|element| element.strip}
-      game_raw[start_idx..start_idx+1].each{ |l| to_ret += " " + l }
+      game_raw[start_idx..start_idx+4].each{ |l| to_ret += " " + l }
       return  to_ret.strip
     end
   end
