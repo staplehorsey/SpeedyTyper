@@ -116,7 +116,7 @@ function ready_set_go()
       data: {my_id:id},
       success:function(responce)
       {
-        //console.log("Ready: " + responce.ready);
+        console.log("Ready: " + responce.ready);
         ready = responce.ready
       }
     });
@@ -153,18 +153,27 @@ function update_game()
 {
   if( playing )
   {
-    $.ajax({
-      url: '/do_update',
-      type: 'GET',
-      async: true,
-      data: {game_id:game_id, my_id:id, my_pos:u_sprite.x, my_won:won},
-      success:function(responce)
-      {
-        opp_sprite.x = responce.pos;
-        playing  = (!responce.win && !won);
-        setTimeout(update_game, Math.random()*1000);
-      }
-    });
+    if( ! single )
+    {
+      $.ajax({
+        url: '/do_update',
+        type: 'GET',
+        async: true,
+        data: {game_id:game_id, my_id:id, my_pos:u_sprite.x, my_won:won},
+        success:function(responce)
+        {
+          opp_sprite.x = responce.pos;
+          playing  = (!responce.win && !won);
+          setTimeout(update_game, Math.random()*1000);
+        }
+      });
+    }
+    else
+    {
+      playing = ! won;
+      setTimeout(update_game, Math.random()*1000);
+    }
+
   }
   else
   {

@@ -11,6 +11,7 @@ module WelcomeHelper
   end
 
   def self.get_update(id, game_id, win, pos)
+    puts(id,game_id,win,pos)
     current_player = Players.find_by_id(id)
     current_player.game_outcome = win
     current_player.pos = pos

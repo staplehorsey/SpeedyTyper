@@ -40,6 +40,7 @@ function GameLogic()
   this.pos = 0;
   this.game_len = 0;
   this.correct_chars= 2;
+  this.total_entires = 0;
 
   /**
    * Loads the game text the user will
@@ -87,6 +88,7 @@ function GameLogic()
           clear = true;
           correct_words += input;
           input = "";
+          this.total_entires++;
           wpm = this.calculate_wpm();
         }
       }
@@ -123,7 +125,7 @@ function GameLogic()
    */
   this.get_line = function()
   {
-    if( this.pos + 10 < this.game_text.length)
+    if( this.correct_chars + 2 < this.game_text.length)
     {
       var i = 0;
       do
@@ -160,8 +162,7 @@ function GameLogic()
     var end_time = new Date().getTime();
     var diff = end_time - start_time;
     diff = diff/60000; // Convert to Minutes
-    total_entries = this.pos;
-    var gwpm = (total_entries/5)/ diff; //Gross Words Per Minute
+    var gwpm = (this.total_entires)/ diff; //Gross Words Per Minute
 
     return gwpm;
   };

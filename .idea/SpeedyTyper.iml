@@ -173,6 +173,7 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.2, ruby-2.0.0-p481) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.5.3, ruby-2.0.0-p481) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicorn (v4.8.3, ruby-2.0.0-p481) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="yard (v0.8.7.6, ruby-2.0.0-p481) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
