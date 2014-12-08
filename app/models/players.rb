@@ -1,7 +1,7 @@
 class Players < ActiveRecord::Base
   @game_size = 2
 
-  # @Description adds a new user to the database and checks for valid name
+  # adds a new user to the database and checks for valid name
   def self.add_user(name)
     new_player = Players.new
 
@@ -18,7 +18,7 @@ class Players < ActiveRecord::Base
     return new_player.id
   end
 
-  #@Description finds users who have been waiting the longest then
+  #finds users who have been waiting the longest then
   #  gives them the same game id also generates a game id for a single
   #  user
   def self.gen_game(to_join)
@@ -38,7 +38,7 @@ class Players < ActiveRecord::Base
 
   end
 
-  #@Description determines if all users in a game are ready
+  #determines if all users in a game are ready
   def self.ready(player_id)
      player = Players.find_by_id(player_id)
      player.awk = true
