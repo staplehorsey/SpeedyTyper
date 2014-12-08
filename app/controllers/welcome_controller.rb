@@ -4,15 +4,19 @@ class WelcomeController < ApplicationController
   def index
   end
 
-  #adds a player to the database and attempts to find them
-  #someone to play with if none are found they are still added
-  #but their game id is set to -1 so they can keep trying
+  # @Description rout when called makes a new user and attempts to add them to a game
+  #  or tries to find a game for a waiting user
+  # @Param Ajax request indicating either a new user to create or find a waiting user a game
+  # @Return the game text and opponent id and server generated id and game id or
+  #  if no game ready -1 game id and the new user id
   def join_game
 
     respond_to do |format|
 
       if params[:first_try] == 'true'
         new_id = Players.add_user(params[:name])
+      elsif params[:me] == '-2'
+        new_id = Players.add_user("-2")
       else
         new_id = params[:me]
       end
@@ -35,6 +39,10 @@ class WelcomeController < ApplicationController
 
   end
 
+  # @Description Takes in user information and gets information about the
+  #   current game including: other player position and if they have won or not
+  #   also adds current user win status to the db
+  #
   def do_update
     respond_to do |format|
       format.json{render :json => WelcomeHelper.get_update(
@@ -46,6 +54,7 @@ class WelcomeController < ApplicationController
     end
   end
 
+  # @Description Determines if all users are ready to play
   def ready
     respond_to do |format|
       player = params[:my_id]

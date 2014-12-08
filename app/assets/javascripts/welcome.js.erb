@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
 //= require game_logic.js
+//= require jquery.foggy.min.js
 
 var input = "";
 var o_input;
@@ -10,9 +11,10 @@ var b, r ,g;
 var ft = true;
   //first try on joining game
 var game_id = -1;
-var id = "";
+var id = "-2";
 var game_text;
 var opponent;
+var single = true;
 
 var playing = true;
 var won     = false;
@@ -23,16 +25,54 @@ var current_game = new GameLogic;
 
 var opp_sprite;
 
+/**
+ * Adds listener to input to invoke update function
+ */
 $(document).ready(function() {
+
+  //listen for user input
   $('input').bind('input propertychange', function () {
     o_input = true;
     input = $('#in').val();
   });
+
+  //blur screen to ask for single or multi player
+  $('#con').foggy();
+
 });
 
+/**
+ * Processes input from initial buttons to determines
+ * if the user would like to play single or multi-player
+ * Removes the fog effect on ether change
+ * @param button
+ */
+function chooseGameMode(button)
+{
+  if( $(button).attr('id') == 'm' )
+  {
+    single = false;
+    id = "";
+  }
+  else
+  {
+    id = "-2";
+    ft = false;
+  }
+  $('.button-group').hide();
+  $('#con').foggy(false);
+  init();
+}
+
+/**
+ * Asks server to create a new player then keeps polling until
+ * a game is ready. If single player then one should be available
+ * right away
+ */
 function init()
 {
   console.log("Waiting to join a new game");
+  console.log("Id: " + id);
   if( game_id == -1)
   {
     $.ajax({
@@ -56,34 +96,37 @@ function init()
     console.log("Found other player");
     current_game.game_text = "Waiting for other player";
     current_game.update_line();
-    opp_sprite.visible = true;
+    if( ! single ) opp_sprite.visible = true;
     o_input = true;
     ready_set_go();
   }
 }//end init
 
-
+/**
+ * Waits for other player to load text
+ */
 function ready_set_go()
 {
   if( ! ready )
   {
     $.ajax({
-        url: '/ready',
-        type: 'GET',
-        async: false,
-        data: {my_id:id},
-        success:function(responce)
-        {
-          console.log("Ready: " + responce.ready);
-          ready = responce.ready
-        }
+      url: '/ready',
+      type: 'GET',
+      async: false,
+      data: {my_id:id},
+      success:function(responce)
+      {
+        //console.log("Ready: " + responce.ready);
+        ready = responce.ready
+      }
     });
     setTimeout(ready_set_go, Math.random()*100);
   }
   else
   {
     current_game.game_text = this.game_text;
-    current_game.update_line();
+    current_game.game_len  = this.game_text.length;
+    current_game.get_line();
     o_input = true;
     update_game();
   }
@@ -92,12 +135,20 @@ function ready_set_go()
 
 var game = new Phaser.Game(800,400, Phaser.CANVAS, 'gameDiv', { preload: preload, create: create, update: update });
 
+/**
+ * Phaser pre-load
+ */
 function preload() {
   game.stage.backgroundColor = '#f7f7f7';
   game.load.image('user','<%= asset_path 'yourWelcomeJacob.png' %>');
-  game.load.image('opponent','<%= asset_path 'sierrasShark.png' %>');
+  game.load.image('opponent','<%= asset_path 'SHARK.png' %>');
 }
 
+/**
+ * Polls server for opponent updates
+ * also determins if current user has won and sends that
+ * information to the server to notify other users
+ */
 function update_game()
 {
   if( playing )
@@ -105,14 +156,13 @@ function update_game()
     $.ajax({
       url: '/do_update',
       type: 'GET',
-      async: false,
+      async: true,
       data: {game_id:game_id, my_id:id, my_pos:u_sprite.x, my_won:won},
       success:function(responce)
       {
-        console.log(responce);
         opp_sprite.x = responce.pos;
-        playing  = !responce.win;
-        setTimeout(update_game, Math.random()*100);
+        playing  = (!responce.win && !won);
+        setTimeout(update_game, Math.random()*1000);
       }
     });
   }
@@ -120,15 +170,13 @@ function update_game()
   {
     if( won )
     {
-      current_game.game_text = "Winner winner chicken dinner";
-      current_game.update_line();
-      o_input = true;
+      b.setText( "Winner winner chicken dinner");
+      g.setText("");
     }
     else
     {
-      current_game.game_text = "Lost =(";
-      current_game.update_line();
-      o_input = true;
+      b.setText( "Lost =(");
+      g.setText("");
     }
     //TODO add logic to play again
   }
@@ -136,63 +184,68 @@ function update_game()
 
 var u_sprite, bg,t;
 
-function create() {
+/**
+ * Initializes Phaser game objects
+ */
+function create()
+{
 
-    init("Looking for other players");
+  game.world.width = 800;
+  game.world.height = 400;
 
-    game.world.width = 800;
-    game.world.height = 400;
+  bg = game.add.graphics(0, 0);
+  bg.beginFill(0xf7f7f7, 1);
+  bg.drawRect(0, 0, game.world.width, game.world.height);
+  bg.endFill();
 
-    bg = game.add.graphics(0, 0);
-    bg.beginFill(0xf7f7f7, 1);
-    bg.drawRect(0, 0, game.world.width, game.world.height);
-    bg.endFill();
+  u_sprite = game.add.sprite(0,200,'user');
+  opp_sprite = game.add.sprite(0, 300,'opponent');
+  u_sprite.inputEnabled = true;
+  opp_sprite.inputEnabled = true;
+  opp_sprite.visible = false;
 
-    u_sprite = game.add.sprite(0,200,'user');
-    opp_sprite = game.add.sprite(0, 300,'opponent');
-    u_sprite.inputEnabled = true;
-    opp_sprite.inputEnabled = true;
-    opp_sprite.visible = false;
+  var tr = current_game.process_input(input);
+  var grey  = tr.gray;
+  var red   = tr.red;
+  var black = tr.black;
 
-    var tr = current_game.process_input(input);
-    var grey  = tr.gray;
-    var red   = tr.red;
-    var black = tr.black;
+  var style_b = { font: "25px Helvetica", fill: "#00000",  align: "left" };
+  var style_r = { font: "25px Helvetica", fill: "#ff0000", align: "left" };
+  var style_g = { font: "25px Helvetica", fill: "#C8C7C7", align: "left" };
 
-    var style_b = { font: "25px Helvetica", fill: "#00000",  align: "left" };
-    var style_r = { font: "25px Helvetica", fill: "#ff0000", align: "left" };
-    var style_g = { font: "25px Helvetica", fill: "#C8C7C7", align: "left" };
-
-    b = game.add.text(0, 0, black, style_b);
-    r = game.add.text(b.width, 0, red, style_r);
-    g = game.add.text(0, 0,grey,style_g);
-    //set to zero because there should not be any input on init
+  b = game.add.text(0, 0, black, style_b);
+  r = game.add.text(b.width, 0, red, style_r);
+  g = game.add.text(0, 0,grey,style_g);
+  //set to zero because there should not be any input on init
 }
 
+/**
+ * Phaser update function draws on the canvas and calls
+ * game logic to determin what to render
+ */
 function update() {
 
   if( o_input )
   {
     var to_render = current_game.process_input(input);
+
     document.getElementById("wpm").innerHTML = "WPM: " + Math.round(wpm);
+
     b.setText(to_render.black);
     r.setText(to_render.red);
     r.x = b.width;
     g.setText(to_render.gray);
     g.x = (b.width + r.width) -2 ;
 
-    if (clear)
+    if( clear )
     {
+      won = current_game.get_game_status();
       document.getElementById("in").value = '';
       clear = false;
     }
 
-    u_sprite.x += (to_render.advance) ? (800/game_text.split(" ").length) : 0;
+    u_sprite.x += (to_render.advance) ? ((800 - u_sprite.width)/(game_text.split(" ").length )) : 0;
 
-    if(u_sprite.x > game_text.split(" ").length - 20)
-    {
-      won = true;
-    }
     o_input = false;
   }
 

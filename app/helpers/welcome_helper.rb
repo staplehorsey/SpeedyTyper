@@ -21,8 +21,6 @@ module WelcomeHelper
       |p| to_ret = {op:p.id, pos:p.pos, win:p.game_outcome}
     }
 
-    puts(to_ret[:pos])
-
     return to_ret
   end
 
@@ -36,20 +34,32 @@ module WelcomeHelper
     to_ret = false
     if Players.where(:game_id => game_Id ).where(:awk => true).count == @game_size
       to_ret = true
+    elsif p.player_id == '-2'
+      to_ret = true
     end
+
     return to_ret
   end
 
   #only give games text so keep track of seed for text
+  #TODO get more lines of text
   def self.get_game_text(seed)
     if seed != -1
-      lines = File.open(Rails.public_path + 'Foo_text').readlines
+      to_ret = ""
+      game_raw = []
+
+      File.read(Rails.public_path + 'speedyTyperSentences.txt').each_line do |line|
+        game_raw << line
+      end
+      puts(game_raw)
+
       ngen = Random.new(seed)
       ngen.seed
-      start_idx = ngen.rand(lines.length-5)
-      game_raw = lines.slice(start_idx, start_idx+5)
+
+      start_idx = ngen.rand(game_raw.length - 1)
       game_raw = game_raw.map {|element| element.strip}
-      return game_raw.join(' ')
+      game_raw[start_idx..start_idx+1].each{ |l| to_ret += " " + l }
+      return  to_ret.strip
     end
   end
 
